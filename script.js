@@ -134,3 +134,20 @@ function rgbToCMYL(r, g, b, normalized = false) {
 		k: k,
 	};
 }
+
+// Random Color
+// Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
+function ChangeToRandomColor() {
+	let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+	document.querySelector("#color-picker").value = randomColor;
+	ChangeColor(randomColor);
+}
+
+// Check if a color is already provided in the URL
+let urlColor = window.location.href.match(/[&?]color=([^&]*)/i);
+if (urlColor && urlColor[1]) {
+	ChangeColor(urlColor[1]);
+	document.querySelector("#color-picker").value = urlColor[1];
+} else {
+	ChangeToRandomColor();
+}
