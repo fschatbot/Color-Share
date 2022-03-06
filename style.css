@@ -5,6 +5,13 @@
 	initial-value: #000;
 }
 
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	min-height: 100vh;
 	background-color: var(--color, #fff);
@@ -20,6 +27,9 @@ body {
 	font-family: "Sansita Swashed", cursive;
 	font-family: "Courgette", cursive;
 	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
 }
 
 .title {
@@ -30,4 +40,57 @@ body {
 .description {
 	font-size: 1.5rem;
 	color: #475569;
+}
+
+.preview {
+	height: 150px;
+	width: 150px;
+	border-radius: 30px;
+	background-color: var(--color, #000);
+	margin-right: 1rem;
+}
+
+input[type="input"] {
+	border-radius: 5px;
+	border: 1px solid #475569;
+	height: 30px;
+	width: 100%;
+}
+
+hr {
+	margin: 10px 0;
+}
+
+input[type="color"] {
+	appearance: none;
+	height: 200px;
+	width: 100%;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	border-radius: 15px;
+}
+
+input[type="color"]::-moz-color-swatch {
+	border: none;
+	border-radius: 15px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+	border-radius: 15px;
+}
+
+.names {
+	display: table;
+	width: 100%;
+}
+.name {
+	display: table-row;
+	width: 100%;
+}
+
+.name label,
+.name input {
+	display: table-cell;
 }
