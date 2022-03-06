@@ -1,0 +1,10 @@
+@property --color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #000;
+}
+
+body {
+	min-height: 100vh;
+	background-color: var(--color, #fff);
+}
