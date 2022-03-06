@@ -84,6 +84,9 @@ input[type="color"]::-webkit-color-swatch {
 
 .names {
 	text-align: start;
+}
+
+.form {
 	font-family: "Source Code Pro", monospace;
 }
 
