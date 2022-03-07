@@ -39,9 +39,11 @@ window.ChangeColor = ChangeColor; // For Debugging Purposes
 window.Color = Color; // Also For Debugging Purposes
 
 Hex_Box.addEventListener("input", (e) => {
-	if (e.target.value.match(/[0-9A-Fa-f]{6}/g)) ChangeColor(e.target.value);
-	else {
-		document.querySelector('label.invalid-inputs[for="Hex-Code"]').style.display = "block";
+	if (e.target.value.match(/^#?[0-9A-Fa-f]{6}$/g)) {
+		ChangeColor(e.target.value);
+		document.querySelector('label.invalid-inputs[for="Hex-Code"]').style.opacity = "0";
+	} else {
+		document.querySelector('label.invalid-inputs[for="Hex-Code"]').style.opacity = "1";
 	}
 });
 

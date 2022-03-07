@@ -96,9 +96,16 @@ input[type="color"]::-webkit-color-swatch {
 	margin-top: 10px;
 }
 
-.names label {
+.names label:not(.invalid-inputs) {
 	position: absolute;
 	transform: translate(30%, -50%);
 	background: white;
 	padding: 0 5px;
+}
+
+label.invalid-inputs {
+	font-size: small;
+	color: red;
+	opacity: 0;
+	transition: opacity ease 300ms;
 }
