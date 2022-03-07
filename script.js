@@ -62,6 +62,20 @@ RGB_Box.addEventListener("input", (e) => {
 	}
 });
 
+HSL_Box.addEventListener("input", (e) => {
+	let elemClassList = HSL_Box.parentElement.classList;
+	let match = e.target.value
+		.toLowerCase()
+		.replaceAll(" ", "")
+		.match(/^(?:hsl\()?(\d{1,3})°?,(\d{1,2})%?,(\d{1,2})%?[)]?$/g);
+	if (match) {
+		ChangeColor(Color.hsl(match[0].replaceAll(/[%°]/g, "").split(",").map(Number)));
+		elemClassList.remove("invalid");
+	} else {
+		elemClassList.add("invalid");
+	}
+});
+
 // Random Color
 // Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
 function ChangeToRandomColor() {
