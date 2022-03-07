@@ -17,7 +17,7 @@ function ChangeColor(hex) {
 	// Set All the fields with the respective info
 	document.body.style.setProperty("--color", color.hex());
 	Hex_Box.value = color.hex();
-	RGB_Box.value = color.rgb().array().join(", ");
+	RGB_Box.value = color.rgb().round().array().join(", ");
 	let hsl = color.hsl().round().object();
 	HSL_Box.value = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
 	let hsv = color.hsv().round().object();
@@ -34,6 +34,9 @@ function ChangeColor(hex) {
 		.then((data) => data.colors[0].name)
 		.then((name) => (currentColor == color ? (Name_Box.value = name) : null));
 }
+
+window.ChangeColor = ChangeColor; // For Debugging Purposes
+window.Color = Color; // Also For Debugging Purposes
 
 // Random Color
 // Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
