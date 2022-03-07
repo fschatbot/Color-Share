@@ -38,6 +38,13 @@ function ChangeColor(hex) {
 window.ChangeColor = ChangeColor; // For Debugging Purposes
 window.Color = Color; // Also For Debugging Purposes
 
+Hex_Box.addEventListener("input", (e) => {
+	if (e.target.value.match(/[0-9A-Fa-f]{6}/g)) ChangeColor(e.target.value);
+	else {
+		document.querySelector('label.invalid-inputs[for="Hex-Code"]').style.display = "block";
+	}
+});
+
 // Random Color
 // Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
 function ChangeToRandomColor() {
