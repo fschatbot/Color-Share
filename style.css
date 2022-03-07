@@ -103,9 +103,9 @@ input[type="color"]::-webkit-color-swatch {
 	padding: 0 5px;
 }
 
-.names label.invalid {
+.name.invalid label {
 	color: red;
 }
-.names label.invalid::after {
-	content: " (invalid)";
+.name.invalid input {
+	border-color: red;
 }

@@ -41,9 +41,9 @@ window.Color = Color; // Also For Debugging Purposes
 Hex_Box.addEventListener("input", (e) => {
 	if (e.target.value.match(/^#?[0-9A-Fa-f]{6}$/g)) {
 		ChangeColor(e.target.value);
-		document.querySelector('[for="Hex-Code"]').classList.remove("invalid");
+		document.querySelector('[for="Hex-Code"]').parentElement.classList.remove("invalid");
 	} else {
-		document.querySelector('[for="Hex-Code"]').classList.add("invalid");
+		document.querySelector('[for="Hex-Code"]').parentElement.classList.add("invalid");
 	}
 });
 
