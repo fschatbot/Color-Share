@@ -26,6 +26,11 @@ function ChangeColor(hex) {
 		.array()
 		.map((x) => x + "%")
 		.join(", ");
+	// Fetch Nearest Color Name
+	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
+		.then((res) => res.json())
+		.then((data) => data.colors[0].name)
+		.then((name) => (Name_Box.value = name));
 }
 
 // Random Color
