@@ -1,3 +1,5 @@
+const Color = require("color");
+
 const Hex_Box = document.querySelector('[name="Hex-Code"]'),
 	RGB_Box = document.querySelector('[name="RGB-Code"]'),
 	HSL_Box = document.querySelector('[name="HSL-Code"]'),
