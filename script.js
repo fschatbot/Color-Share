@@ -10,8 +10,10 @@ document
 	.querySelector("#color-picker")
 	.addEventListener("input", (e) => ChangeColor(e.target.value), false);
 
+let currentColor = null;
 function ChangeColor(hex) {
 	const color = Color(hex);
+	currentColor = color;
 	// Set All the fields with the respective info
 	document.body.style.setProperty("--color", color.hex());
 	Hex_Box.value = color.hex();
@@ -30,7 +32,7 @@ function ChangeColor(hex) {
 	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
 		.then((res) => res.json())
 		.then((data) => data.colors[0].name)
-		.then((name) => (Name_Box.value = name));
+		.then((name) => (currentColor == color ? (Name_Box.value = name) : null));
 }
 
 // Random Color
