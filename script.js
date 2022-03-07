@@ -11,7 +11,7 @@ document
 	.addEventListener("input", (e) => ChangeColor(e.target.value), false);
 
 let currentColor = null;
-function ChangeColor(hex) {
+function ChangeColor(hex, update_input = false) {
 	const color = Color(hex);
 	currentColor = color;
 	// Set All the fields with the respective info
@@ -28,6 +28,8 @@ function ChangeColor(hex) {
 		.array()
 		.map((x) => x + "%")
 		.join(", ");
+	if (update_input) document.querySelector("#color-picker").value = color.hex();
+
 	// Fetch Nearest Color Name
 	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
 		.then((res) => res.json())
@@ -41,7 +43,7 @@ window.Color = Color; // Also For Debugging Purposes
 Hex_Box.addEventListener("input", (e) => {
 	let elemClassList = Hex_Box.parentElement.classList;
 	if (e.target.value.match(/^#?[0-9A-Fa-f]{6}$/g)) {
-		ChangeColor(e.target.value);
+		ChangeColor(e.target.value, true);
 		elemClassList.remove("invalid");
 	} else {
 		elemClassList.add("invalid");
@@ -55,7 +57,7 @@ RGB_Box.addEventListener("input", (e) => {
 		.replaceAll(" ", "")
 		.match(/^(?:rgb\()?(\d{1,3}),(\d{1,3}),(\d{1,3})[)]?$/g);
 	if (match) {
-		ChangeColor(Color.rgb(match[0].split(",").map(Number)));
+		ChangeColor(Color.rgb(match[0].split(",").map(Number)), true);
 		elemClassList.remove("invalid");
 	} else {
 		elemClassList.add("invalid");
@@ -69,7 +71,7 @@ HSL_Box.addEventListener("input", (e) => {
 		.replaceAll(" ", "")
 		.match(/^(?:hsl\()?(\d{1,3})°?,(\d{1,2})%?,(\d{1,2})%?[)]?$/g);
 	if (match) {
-		ChangeColor(Color.hsl(match[0].replaceAll(/[%°]/g, "").split(",").map(Number)));
+		ChangeColor(Color.hsl(match[0].replaceAll(/[%°]/g, "").split(",").map(Number)), true);
 		elemClassList.remove("invalid");
 	} else {
 		elemClassList.add("invalid");
