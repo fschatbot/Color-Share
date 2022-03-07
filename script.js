@@ -39,9 +39,23 @@ window.ChangeColor = ChangeColor; // For Debugging Purposes
 window.Color = Color; // Also For Debugging Purposes
 
 Hex_Box.addEventListener("input", (e) => {
-	let elemClassList = document.querySelector('[for="Hex-Code"]').parentElement.classList;
+	let elemClassList = Hex_Box.parentElement.classList;
 	if (e.target.value.match(/^#?[0-9A-Fa-f]{6}$/g)) {
 		ChangeColor(e.target.value);
+		elemClassList.remove("invalid");
+	} else {
+		elemClassList.add("invalid");
+	}
+});
+
+RGB_Box.addEventListener("input", (e) => {
+	let elemClassList = RGB_Box.parentElement.classList;
+	let match = e.target.value
+		.toLowerCase()
+		.replaceAll(" ", "")
+		.match(/^(?:rgb\()?(\d{1,3}),(\d{1,3}),(\d{1,3})[)]?$/g);
+	if (match) {
+		ChangeColor(Color.rgb(match[0].split(",").map(Number)));
 		elemClassList.remove("invalid");
 	} else {
 		elemClassList.add("invalid");
