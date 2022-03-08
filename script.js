@@ -10,12 +10,10 @@ document
 	.querySelector("#color-picker")
 	.addEventListener("input", (e) => ChangeColor(e.target.value), false);
 
-// Thx https://davidwalsh.name/cancel-fetch
-const controller = new AbortController();
-const { signal } = controller;
-
+let CurrentColor = null;
 function ChangeColor(hex, update_input = false) {
 	const color = Color(hex);
+	CurrentColor = color;
 	// Set All the fields with the respective info
 	document.body.style.setProperty("--color", color.hex());
 	Hex_Box.value = color.hex();
@@ -31,19 +29,11 @@ function ChangeColor(hex, update_input = false) {
 		.map((x) => x + "%")
 		.join(", ");
 	if (update_input) document.querySelector("#color-picker").value = color.hex();
-
-	// Cancel the previous fetch requests
-	controller.abort();
 	// Fetch Nearest Color Name
-	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`, { signal })
+	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
 		.then((res) => res.json())
 		.then((data) => data.colors[0].name)
-		.then((name) => (Name_Box.value = name))
-		.catch((err) => {
-			// Ignore Abort Errors
-			if (err.name === "AbortError") console.log("Fetch Request has been canceled");
-			console.warn(err);
-		});
+		.then((name) => (CurrentColor == color ? (Name_Box.value = name) : null));
 }
 
 window.ChangeColor = ChangeColor; // For Debugging Purposes
