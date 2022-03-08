@@ -40,7 +40,7 @@ function ChangeColor(hex, update_input = false) {
 		.then((name) => (Name_Box.value = name))
 		.catch((err) => {
 			// Ignore Abort Errors
-			if (e.name === "AbortError") return;
+			if (err.name === "AbortError") return;
 			console.error(err);
 		});
 }
