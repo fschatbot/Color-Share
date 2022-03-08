@@ -16,7 +16,6 @@ const { signal } = controller;
 
 function ChangeColor(hex, update_input = false) {
 	const color = Color(hex);
-	controller.abort();
 	// Set All the fields with the respective info
 	document.body.style.setProperty("--color", color.hex());
 	Hex_Box.value = color.hex();
@@ -33,6 +32,8 @@ function ChangeColor(hex, update_input = false) {
 		.join(", ");
 	if (update_input) document.querySelector("#color-picker").value = color.hex();
 
+	// Cancel the previous fetch requests
+	controller.abort();
 	// Fetch Nearest Color Name
 	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`, { signal })
 		.then((res) => res.json())
@@ -40,8 +41,8 @@ function ChangeColor(hex, update_input = false) {
 		.then((name) => (Name_Box.value = name))
 		.catch((err) => {
 			// Ignore Abort Errors
-			if (err.name === "AbortError") return;
-			console.error(err);
+			if (err.name === "AbortError") console.log("Fetch Request has been canceled");
+			console.warn(err);
 		});
 }
 
