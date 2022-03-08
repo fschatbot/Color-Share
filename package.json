@@ -1,9 +1,11 @@
 {
 	"dependencies": {
-		"browserify": "^17.0.0",
 		"color": "^4.2.1"
 	},
 	"scripts": {
 		"build": "browserify script.js -o app.js"
+	},
+	"devDependencies": {
+		"browserify": "^17.0.0"
 	}
 }
