@@ -91,6 +91,20 @@ HSV_Box.addEventListener("input", (e) => {
 	}
 });
 
+CMYK_Box.addEventListener("input", (e) => {
+	let elemClassList = CMYK_Box.parentElement.classList;
+	let match = e.target.value
+		.toLowerCase()
+		.replaceAll(" ", "")
+		.match(/^\d{1,3}%?,\d{1,3}%?,\d{1,3}%?,\d{1,3}%?$/g);
+	if (match) {
+		ChangeColor(Color.cmyk(match[0].replaceAll(/[%]/g, "").split(",").map(Number)).hex(), true);
+		elemClassList.remove("invalid");
+	} else {
+		elemClassList.add("invalid");
+	}
+});
+
 // Random Color
 // Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
 function ChangeToRandomColor() {
