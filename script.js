@@ -124,5 +124,9 @@ if (urlColor && urlColor[1]) {
 }
 
 document.getElementById("settings").addEventListener("click", () => {
-	document.querySelector("body > div.container").classList.toggle("open");
+	document.querySelector("body > div.container").classList.toggle("close");
+});
+
+document.getElementById("close_button").addEventListener("click", () => {
+	document.querySelector("body > div.container").classList.add("close");
 });

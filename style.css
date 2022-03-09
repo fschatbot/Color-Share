@@ -125,11 +125,22 @@ input[type="color"]::-webkit-color-swatch {
 	transform: rotate(90deg);
 }
 
-.container.open {
+.container.close {
 	transform: translateY(-100vh);
 	transition: transform 0.9s ease-in;
 }
 
 .container {
+	position: relative;
 	transition: transform 0.5s ease-in;
+}
+
+.close_button {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 20px;
+	cursor: pointer;
 }
