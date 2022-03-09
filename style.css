@@ -109,3 +109,18 @@ input[type="color"]::-webkit-color-swatch {
 .name.invalid input {
 	border-color: red;
 }
+
+.settings {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 40px;
+	width: 40px;
+	margin: 15px;
+	cursor: pointer;
+	transition: transform 500ms ease;
+}
+
+.settings:hover {
+	transform: rotate(90deg);
+}
