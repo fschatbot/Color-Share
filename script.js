@@ -122,3 +122,7 @@ if (urlColor && urlColor[1]) {
 } else {
 	ChangeToRandomColor();
 }
+
+document.getElementById("settings").addEventListener("click", () => {
+	document.querySelector("body > div.container").classList.toggle("open");
+});

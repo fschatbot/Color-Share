@@ -20,7 +20,7 @@ body {
 	align-items: center;
 }
 
-#container {
+.container {
 	background-color: white;
 	border-radius: 2rem;
 	padding: 2em;
@@ -123,4 +123,13 @@ input[type="color"]::-webkit-color-swatch {
 
 .settings:hover {
 	transform: rotate(90deg);
+}
+
+.container.open {
+	transform: translateY(-100vh);
+	transition: transform 0.9s ease-in;
+}
+
+.container {
+	transition: transform 0.5s ease-in;
 }
