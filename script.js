@@ -33,7 +33,8 @@ function ChangeColor(hex, update_input = false) {
 	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
 		.then((res) => res.json())
 		.then((data) => data.colors[0].name)
-		.then((name) => (CurrentColor == color ? (Name_Box.value = name) : null));
+		.then((name) => (CurrentColor == color ? (Name_Box.value = name) : null))
+		.catch(console.warn);
 }
 
 window.ChangeColor = ChangeColor; // For Debugging Purposes
