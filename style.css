@@ -129,12 +129,12 @@ input[type="color"]::-webkit-color-swatch {
 
 .container.close {
 	transform: translateY(-100vh);
-	transition: transform 0.9s ease-in;
+	transition: transform 0.4s ease-out;
 }
 
 .container {
 	position: relative;
-	transition: transform 0.5s ease-in;
+	transition: transform 0.5s ease-out;
 }
 
 .close_button {
