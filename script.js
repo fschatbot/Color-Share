@@ -111,8 +111,7 @@ CMYK_Box.addEventListener("input", (e) => {
 // Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
 function ChangeToRandomColor() {
 	let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-	document.querySelector("#color-picker").value = randomColor;
-	ChangeColor(randomColor);
+	ChangeColor(randomColor, true);
 }
 
 // Check if a color is already provided in the URL
@@ -131,3 +130,5 @@ document.getElementById("settings").addEventListener("click", () => {
 document.getElementById("close_button").addEventListener("click", () => {
 	document.querySelector("body > div.container").classList.add("close");
 });
+
+document.getElementById("rand").addEventListener("click", ChangeToRandomColor);
