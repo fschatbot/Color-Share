@@ -3,10 +3,13 @@
 		"color": "^4.2.1"
 	},
 	"scripts": {
-		"build": "webpack-cli build --entry ./script.js -o ./ --mode production",
-		"build2": "browserify script.js -o app.js"
+		"build": "npm run build:JS && npm run build:CSS",
+		"build:JS": "webpack-cli build --entry ./script.js -o ./ --mode production",
+		"build:JS2": "browserify script.js -o app.js",
+		"build:CSS": "npx autoprefixer-cli style.css -o style.prefixed.css"
 	},
 	"devDependencies": {
+		"autoprefixer-cli": "^1.0.0",
 		"browserify": "^17.0.0",
 		"webpack-cli": "^4.9.2"
 	}
