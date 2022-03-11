@@ -21,11 +21,12 @@ body {
 }
 
 .container {
+	box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.25);
 	background-color: white;
 	border-radius: 2rem;
 	padding: 2em;
 	text-align: center;
-
+	border: 1px solid #ccc;
 	width: 600px;
 }
 
@@ -119,6 +120,7 @@ input[type="color"]::-webkit-color-swatch {
 	margin: 15px;
 	cursor: pointer;
 	transition: transform 500ms ease;
+	stroke: var(--inv-color, #fff);
 }
 
 .settings:hover {
