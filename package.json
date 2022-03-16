@@ -5,13 +5,12 @@
 	"scripts": {
 		"build": "npm run build:JS && npm run build:CSS",
 		"build:JS": "webpack-cli build --entry ./script.js -o ./ --mode production",
-		"build:JS2": "browserify script.js -o app.js",
-		"build:CSS": "npx autoprefixer-cli style.css -o style.prefixed.css"
+		"build:CSS": "npx postcss style.css -u autoprefixer -u cssnano -o style.prefixed.css --no-map --verbose"
 	},
 	"devDependencies": {
-		"autoprefixer-cli": "^1.0.0",
-		"browserify": "^17.0.0",
-		"webpack-cli": "^4.9.2",
-		"postcss": ">=7.0.36"
+		"autoprefixer": "^10.4.3",
+		"cssnano": "^5.1.4",
+		"postcss-cli": "^9.1.0",
+		"webpack-cli": "^4.9.2"
 	}
 }
