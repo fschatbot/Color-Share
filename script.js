@@ -70,7 +70,7 @@ HSL_Box.addEventListener("input", (e) => {
 	let match = e.target.value
 		.toLowerCase()
 		.replaceAll(" ", "")
-		.match(/^(?:hsl\()?(\d{1,3})°?,(\d{1,2})%?,(\d{1,2})%?[)]?$/g);
+		.match(/^(?:hsl\()?(\d{1,3})°?,(\d{1,3})%?,(\d{1,3})%?[)]?$/g);
 	if (match) {
 		ChangeColor(Color.hsl(match[0].replaceAll(/[%°]/g, "").split(",").map(Number)), true);
 		elemClassList.remove("invalid");
@@ -84,7 +84,7 @@ HSV_Box.addEventListener("input", (e) => {
 	let match = e.target.value
 		.toLowerCase()
 		.replaceAll(" ", "")
-		.match(/^(?:hsv\()?(\d{1,3})°?,(\d{1,2})%?,(\d{1,2})%?[)]?$/g);
+		.match(/^(?:hsv\()?(\d{1,3})°?,(\d{1,3})%?,(\d{1,3})%?[)]?$/g);
 	if (match) {
 		ChangeColor(Color.hsv(match[0].replaceAll(/[%°]/g, "").split(",").map(Number)), true);
 		elemClassList.remove("invalid");
