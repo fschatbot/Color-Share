@@ -6,9 +6,7 @@ const Hex_Box = document.querySelector('[name="Hex-Code"]'),
 	HSV_Box = document.querySelector('[name="HSV-Code"]'),
 	CMYK_Box = document.querySelector('[name="CMYK-Code"]'),
 	Name_Box = document.querySelector('[name="Color-Name"]');
-document
-	.querySelector("#color-picker")
-	.addEventListener("input", (e) => ChangeColor(e.target.value), false);
+document.querySelector("#color-picker").addEventListener("input", (e) => ChangeColor(e.target.value), false);
 
 let CurrentColor = null;
 function ChangeColor(hex, update_input = false) {
