@@ -27,6 +27,7 @@ function ChangeColor(hex, update_input = false) {
 		.map((x) => x + "%")
 		.join(", ");
 	if (update_input) document.querySelector("#color-picker").value = color.hex();
+	if (window.history.replaceState) window.history.replaceState(null, "Color Share", "?color=" + color.hex());
 	document.getElementById("settings").style.setProperty("--inv-color", color.negate().hex());
 	// Fetch Nearest Color Name
 	fetch(`https://api.color.pizza/v1/${color.hex().substring(1)}`)
