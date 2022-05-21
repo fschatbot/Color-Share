@@ -12,6 +12,7 @@ let CurrentColor = null;
 function ChangeColor(hex, update_input = false) {
 	const color = Color(hex);
 	CurrentColor = color;
+	setIconColor(color.hex());
 	// Set All the fields with the respective info
 	document.body.style.setProperty("--color", color.hex());
 	Hex_Box.value = color.hex();
@@ -35,6 +36,26 @@ function ChangeColor(hex, update_input = false) {
 		.then((data) => data.colors[0].name)
 		.then((name) => (CurrentColor == color ? (Name_Box.value = name) : null))
 		.catch(console.warn);
+}
+
+function setIconColor(color) {
+	const canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = canvas.height = 16;
+	// Drawing a rounded rectangle, https://stackoverflow.com/a/21931930/13703806
+	// 16x16px size, 4px rounding
+	ctx.fillStyle = color;
+	ctx.beginPath();
+	ctx.moveTo(16, 16);
+	ctx.arcTo(0, 16, 0, 0, 4);
+	ctx.arcTo(0, 0, 16, 0, 4);
+	ctx.arcTo(16, 0, 16, 16, 4);
+	ctx.arcTo(16, 16, 0, 16, 4);
+	ctx.fill();
+
+	// Setting it to the favicon, the page url needs to change but it happens anyways so it's fine
+	var favicon = document.getElementById("favicon");
+	favicon.setAttribute("href", canvas.toDataURL());
 }
 
 window.ChangeColor = ChangeColor; // For Debugging Purposes
