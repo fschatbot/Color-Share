@@ -164,3 +164,40 @@ input[type="color"]::-webkit-color-swatch {
 	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
 	/* appearance: none; */
 }
+
+/* Signature Code Starts from here!! */
+
+a[signature] {
+	/* This takes care of the svg and text alignment */
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-family: sans-serif;
+	/* This takes care of the signature postioning and styling*/
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	color: white;
+	padding: 10px 20px;
+	font-size: 17px;
+
+	/* This takes care of the glass background */
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 7px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	text-decoration: none;
+	transition: background-color 500ms, border-color 500ms;
+}
+
+a[signature]:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+a[signature] svg {
+	width: 20px;
+	height: 20px;
+}
