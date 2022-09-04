@@ -116,15 +116,20 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .settings {
+	transition: transform 500ms ease;
+}
+
+.settingsContainer {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 15px;
+	right: 15px;
 	height: 40px;
 	width: 40px;
-	margin: 15px;
 	cursor: pointer;
-	transition: transform 500ms ease;
-	stroke: var(--inv-color, #fff);
+
+	background-color: rgba(0 0 0 / 0.2);
+	padding: 5px;
+	border-radius: 10px;
 }
 
 .settings:hover {
