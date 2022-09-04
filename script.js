@@ -27,6 +27,7 @@ function ChangeColor(hex, update_input = false) {
 		.array()
 		.map((x) => x + "%")
 		.join(", ");
+	document.querySelector("a[signature]").style.color = color.isLight() ? "black" : "white";
 	if (update_input) document.querySelector("#color-picker").value = color.hex();
 	if (window.history.replaceState) window.history.replaceState(null, "Color Share", "?color=" + color.hex());
 	// Fetch Nearest Color Name
