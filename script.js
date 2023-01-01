@@ -131,14 +131,21 @@ CMYK_Box.addEventListener("input", (e) => {
 // Code from: https://gist.github.com/bendc/76c48ce53299e6078a76
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-function ChangeToRandomColor() {
-	// Generating cute HSL colors
-	var h = randomInt(0, 360);
-	var s = randomInt(42, 98);
-	var l = randomInt(40, 90);
+function ChangeToRandomColor(cute = false) {
+	if (cute) {
+		// Generating cute HSL colors
+		let h = randomInt(0, 360);
+		let s = randomInt(42, 98);
+		let l = randomInt(40, 90);
 
-	// Updating to the color
-	ChangeColor(Color.hsl([h, s, l]), true);
+		// Updating to the color
+		ChangeColor(Color.hsl([h, s, l]).hex(), true);
+	} else {
+		let r = Math.floor(Math.random() * 255);
+		let g = Math.floor(Math.random() * 255);
+		let b = Math.floor(Math.random() * 255);
+		ChangeColor(Color.rgb([r, g, b]).hex(), true);
+	}
 }
 
 // Check if a color is already provided in the URL
@@ -147,7 +154,7 @@ if (urlColor && urlColor[1]) {
 	ChangeColor(urlColor[1]);
 	document.querySelector("#color-picker").value = urlColor[1];
 } else {
-	ChangeToRandomColor();
+	ChangeToRandomColor(true);
 }
 
 document.getElementById("settings").addEventListener("click", () => {
