@@ -128,13 +128,17 @@ CMYK_Box.addEventListener("input", (e) => {
 });
 
 // Random Color
-// Code from: https://css-tricks.com/snippets/javascript/random-hex-color/ (I don't understand whats going on in the code)
+// Code from: https://gist.github.com/bendc/76c48ce53299e6078a76
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 function ChangeToRandomColor() {
-	var r = Math.floor(Math.random() * 255);
-	var g = Math.floor(Math.random() * 255);
-	var b = Math.floor(Math.random() * 255);
-	// Update the color
-	ChangeColor(Color({ r, g, b }).hex(), true);
+	// Generating cute HSL colors
+	var h = randomInt(0, 360);
+	var s = randomInt(42, 98);
+	var l = randomInt(40, 90);
+
+	// Updating to the color
+	ChangeColor(Color.hsl([h, s, l]), true);
 }
 
 // Check if a color is already provided in the URL
