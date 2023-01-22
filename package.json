@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"color": "^4.2.1"
+		"color": "^4.2.3"
 	},
 	"scripts": {
 		"build": "npm run build:JS && npm run build:CSS",
@@ -8,9 +8,9 @@
 		"build:CSS": "npx postcss style.css -u autoprefixer -u cssnano -o style.prefixed.css --no-map --verbose"
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.3",
-		"cssnano": "^5.1.4",
-		"postcss-cli": "^9.1.0",
-		"webpack-cli": "^4.9.2"
+		"autoprefixer": "^10.4.13",
+		"cssnano": "^5.1.14",
+		"postcss-cli": "^10.1.0",
+		"webpack-cli": "^5.0.1"
 	}
 }
